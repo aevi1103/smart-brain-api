@@ -11,6 +11,8 @@ const handlerRegister = (db, bcrypt) => (req, res) => {
 
     bcrypt.hash(password, saltRounds, function(err, hash) {
 
+        console.log('register hash.... ', hash)
+
         if (err) {
             return res.status(400).send('bcrypt error', err)
         }
