@@ -11,6 +11,10 @@ const handlerRegister = (db, bcrypt) => (req, res) => {
 
     bcrypt.hash(password, saltRounds, function(err, hash) {
 
+        if (err) {
+            return res.send('bcrypt error', err)
+        }
+
         db.transaction(trx => {
 
             trx.insert({
