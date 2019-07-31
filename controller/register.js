@@ -12,7 +12,7 @@ const handlerRegister = (db, bcrypt) => (req, res) => {
     bcrypt.hash(password, saltRounds, function(err, hash) {
 
         if (err) {
-            return res.send('bcrypt error', err)
+            return res.status(400).send('bcrypt error', err)
         }
 
         db.transaction(trx => {
@@ -41,7 +41,7 @@ const handlerRegister = (db, bcrypt) => (req, res) => {
             .catch(trx.rollback)
 
         })
-        .catch(err => res.status(404).json(err))
+        .catch(err => res.status(404).json('unable to register!'))
 
     });
 }
