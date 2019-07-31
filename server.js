@@ -28,11 +28,15 @@ findUserByid = (id) => {findUserByid
     return db.select('*').from('users').where('id', id)
 }
 
+// app.get('/', (req, res) => {
+//     db.select('*').from('users')
+//         .then(data => {
+//             res.send(data)
+//         })
+// });
+
 app.get('/', (req, res) => {
-    db.select('*').from('users')
-        .then(data => {
-            res.send(data)
-        })
+    res.send('it is working')
 });
 
 
