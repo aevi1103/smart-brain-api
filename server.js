@@ -42,6 +42,6 @@ app.get('/profile/:id', (req, res) => profile.handlerProfile(req, res, findUserB
 app.put('/image', (req, res) => image.handlerImage(req, res, db, findUserByid))
 app.post('/imageurl', image.hanldeApiCall)
 
-app.listen(3001, () => {
-    console.log('app is running on port 3001');
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`app is running on port ${process.env.PORT}`);
 })
